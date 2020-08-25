@@ -1,0 +1,54 @@
+<h1 style="color:rgb(163, 158, 158);">Report 2</h1>
+
+<div >
+  <mat-form-field appearance="standard" style="width:500px; margin-left: 30px;">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Raj" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8" >
+      <table mat-table [dataSource]="dataSource" matSort>
+    
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let associate"> {{associate.associateid}} </td>
+        </ng-container>
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let associate"> {{associate.firstname}},{{associate.lastname}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Experience">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Experience </th>
+          <td mat-cell *matCellDef="let associate"> {{associate.yrsexp}} </td>
+        </ng-container>
+   
+        <ng-container matColumnDef="mail">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mail </th>
+          <td mat-cell *matCellDef="let associate" > {{associate.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contact">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
+          <td mat-cell *matCellDef="let associate" > {{associate.phonenumber}} </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> View </th>
+          <td mat-cell *matCellDef="let associate" > 
+            <button mat-raised-button (click)="openDialog(associate.associateid)">View</button>
+             <a routerLink="downloadPDF/{{associate.associateid}}" class="button" role="button" routerLinkActive="active">view</a> 
+          </td>
+        </ng-container> -->
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let associate; columns: displayedColumns;"
+        (click)="openDialog(associate.associateid)"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+</div>

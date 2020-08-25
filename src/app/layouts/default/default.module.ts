@@ -1,13 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DefaultModule } from './layouts/default/default.module'; 
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReportManageridComponent } from './modules/report-managerid/report-managerid.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
+import { DefaultComponent } from './default.component';
+import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { FormComponent } from 'src/app/modules/form/form.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -17,27 +14,33 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { LoginpageComponent } from 'src/app/modules/loginpage/loginpage.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
-import { ReportProjectComponent } from './modules/report-project/report-project.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ReportManageridComponent,
-    ReportProjectComponent,
-    
+    DefaultComponent,
+    DashboardComponent,
+    FormComponent,
+    LoginpageComponent,
+
+
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    DefaultModule,
-    HttpClientModule,
-    MatPaginatorModule,
+    CommonModule,
+    MatCardModule,
+    RouterModule,
+    SharedModule,
     MatTabsModule,
     MatSidenavModule,
     MatDividerModule,
@@ -52,9 +55,9 @@ import { ReportProjectComponent } from './modules/report-project/report-project.
     HttpClientModule,
     MatPaginatorModule,
     MatTableModule,
+    MatDialogModule,
+    MatSelectModule
     
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class DefaultModule { }

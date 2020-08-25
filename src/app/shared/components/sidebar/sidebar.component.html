@@ -1,0 +1,29 @@
+<mat-nav-list>
+    <!-- <div class="profile-card">
+        <div class="header">
+            <h2>{{Name}}</h2>
+            <h4>Mail</h4>
+        </div>
+        <img src="" alt="">
+    </div> -->
+
+    <!-- <mat-divider></mat-divider> -->
+    
+    <h2 style="font-size: 90%; color: aliceblue;" matSubheader>Pages</h2>
+
+    <a style="font-size: 90%; color: aliceblue;" mat-list-item routerLinkActive="list-item-active" routerLink="dash">Dashboard</a>
+    <a style="font-size: 90%; color: aliceblue;" mat-list-item routerLinkActive="list-item-active" routerLink="form">Form</a>
+    <mat-expansion-panel style="background-color: rgb(74, 74, 204);">
+        <mat-expansion-panel-header style="font-size: 90%; color: aliceblue;">
+            Report
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a style="font-size: 90%; color: aliceblue;" mat-list-item routerLinkActive="list-item-active" routerLink="reportManagerid">Report1</a>
+            <a style="font-size: 90%; color: aliceblue;" mat-list-item routerLinkActive="list-item-active" routerLink="reportProject">Report2</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+
+
+    <mat-divider style="font-size: 90%; color: aliceblue;"></mat-divider>
+
+</mat-nav-list>

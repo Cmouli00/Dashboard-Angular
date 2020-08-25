@@ -1,0 +1,219 @@
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+      <form  (ngSubmit)="onSubmit()" >
+        <ng-template matStepLabel>Personal Details</ng-template>
+        
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder=" First name"  [(ngModel)]="associate.firstname" name="firstname" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last name"  [(ngModel)]="associate.lastname" name="lastname" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="associate.dob" name="dob"  required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Hire Date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]="associate.hiredate" name="hiredate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Years of Experience</mat-label>
+          <input matInput placeholder="Years of Experience" [(ngModel)]="associate.yrsexp" name="yrsexp"  required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>PAN Number</mat-label>
+        <input matInput placeholder="PAN Number" [(ngModel)]="associate.pan" name="pan" required>
+      </mat-form-field>
+      <mat-form-field>
+       <mat-label>Email</mat-label>
+       <input matInput placeholder="Email"  [(ngModel)]="associate.email" name="email" >
+       </mat-form-field>
+       <mat-form-field>
+        <mat-label>Contact</mat-label>
+        <input matInput placeholder="Phonenumber"  [(ngModel)]="associate.phonenumber" name="phonenumber" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>address1</mat-label>
+        <input matInput placeholder="address1"  [(ngModel)]="associate.address1" name="address1" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>Address2</mat-label>
+        <input matInput placeholder="Address2"  [(ngModel)]="associate.address2" name="address2" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>postcode</mat-label>
+        <input matInput placeholder="postcode"  [(ngModel)]="associate.postcode" name="postcode" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>manager id</mat-label>
+        <input matInput placeholder="Manager id"  [(ngModel)]="associate.managerid" name="managerid" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>lead id</mat-label>
+        <input matInput placeholder="Lead Id"  [(ngModel)]="associate.leadid" name="leadid" required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>HR id</mat-label>
+        <input matInput placeholder="hrid"  [(ngModel)]="associate.hrid" name="hrid" required>
+        </mat-form-field>
+
+
+        <div>
+          <button mat-button (click)="Update()" matStepperNext>Update</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Details Required">
+      <form (ngSubmit)="onSubmit1()">
+        <ng-template matStepLabel>Project Details</ng-template>
+        <mat-form-field>
+          <mat-label>Project ID</mat-label>
+          <input matInput placeholder="project id" [(ngModel)]="project.projectid" name="projectid"  required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Project Start Date</mat-label>
+          <input matInput [matDatepicker]="picker3" [(ngModel)]="project.prostart" name="prostart"  required>
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Project End Date</mat-label>
+          <input matInput [matDatepicker]="picker4" [(ngModel)]="project.proend" name="proend"  required>
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+        
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Details Required">
+      <form (ngSubmit)="onSubmit3()">
+        <ng-template matStepLabel>Competancy Details</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Competancy Name</mat-label>
+          <mat-select (selectionChange)="changeClient($event)">
+            <mat-option *ngFor="let course of courses" [(ngModel)]="competancy.competancyname" name="competancyname" [value]="course.value">
+              {{course.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Rank</mat-label>
+          <input matInput placeholder="Rank"  [(ngModel)]="competancy.competancyrank" name="competancyrank" required>
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label>Score</mat-label>
+          <input matInput placeholder="Score"  [(ngModel)]="competancy.score" name="score" required>
+          </mat-form-field>
+        
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fourthFormGroup" errorMessage="Details Required">
+      <form (ngSubmit)="onSubmit2()">
+        <ng-template matStepLabel>Project Status</ng-template>
+        <!-- <mat-form-field>
+          <mat-label>Status</mat-label>
+          <input matInput placeholder="Current Status " [(ngModel)]="status.wstatus" name="wstatus"  required>
+        </mat-form-field> -->
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select (selectionChange)="changeClient($event)">
+            <mat-option *ngFor="let com of coms" [(ngModel)]="status.wstatus" name="wstatus" [value]="com.value">
+              {{com.view}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="Update1()" matStepperNext>Update</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    
+      
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="Dashboard()">Dashboard</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
+  <!-- <form (ngSubmit)="onSubmit()">
+
+    <input type="text" class="input" id="firstname" placeholder="First Name" required [(ngModel)]="associate.firstname" name="firstname">
+    <br>
+    <br>
+    <input type="text" class="input" id="lastname" placeholder="Last Name" required [(ngModel)]="associate.lastname" name="lastname">
+    <br>
+    <br>
+    <input type="text" class="input" id="dob" placeholder="Date Of Birth" required [(ngModel)]="associate.dob" name="dob">
+    <br>
+    <br>
+    <input type="text" class="input" id="hiredate" placeholder="Hire Date" required [(ngModel)]="associate.hiredate" name="hiredate">
+    <br>
+    <br>
+    <input type="text" class="input" id="yrsexp" placeholder="Years of Experience" required [(ngModel)]="associate.yrsexp" name="yrs_exp">
+    <br>
+    <br>
+    <input type="text" class="input" id="pan" placeholder="PAN Number" required [(ngModel)]="associate.pan" name="pan">
+    <br>
+    <br>
+    <input type="text" class="input" id="email" placeholder="Email" required [(ngModel)]="associate.email" name="email">
+    <br>
+    <br>
+    <input type="text" class="input" id="phonenumber" placeholder="Contact Number" required [(ngModel)]="associate.phonenumber" name="phonenumber">
+    <br>
+    <br>
+    <input type="text" class="input" id="address1" placeholder="address1" required [(ngModel)]="associate.address1" name="address1">
+    <br>
+    <br>
+    <input type="text" class="input" id="address2" placeholder="address2" required [(ngModel)]="associate.address2" name="address2">
+    <br>
+    <br>
+    <input type="text" class="input" id="postcode" placeholder="Post code" required [(ngModel)]="associate.postcode" name="postcode">
+    <br>
+    <br>
+    <input type="text" class="input" id="managerid" placeholder="Manager ID" required [(ngModel)]="associate.managerid" name="managerid">
+    <br>
+    <br>
+    <input type="text" class="input" id="leadid" placeholder="Lead Id" required [(ngModel)]="associate.leadid" name="leadid">
+    <br>
+    <br>
+    <input type="text" class="input" id="hrid" placeholder="HR Id" required [(ngModel)]="associate.hrid" name="hrid">
+
+  <button type="submit" style="margin-left: 40%; margin-top: 4%;" class="button">Submit</button>
+</form> -->
